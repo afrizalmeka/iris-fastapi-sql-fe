@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="card">
+    <h1>Login</h1>
+    <p class="subtitle">Masuk untuk mulai prediksi tanaman iris.</p>
+    <form method="post" action="/login">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required />
+      </div>
+      <div class="form-actions">
+        <button type="submit">Masuk</button>
+        <a class="button-link secondary" href="/register">Buat akun</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

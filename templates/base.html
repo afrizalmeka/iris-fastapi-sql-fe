@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }} | Iris Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">Iris Lab</div>
+      <nav class="nav-links">
+        {% if user %}
+          <a href="/prediksi" class="{% if request.url.path == '/prediksi' %}active{% endif %}">Prediksi</a>
+          <a href="/users" class="{% if request.url.path == '/users' %}active{% endif %}">Manajemen</a>
+          <a href="/logout">Keluar</a>
+          <span class="tag">{{ user.username }} · {{ user.role }}</span>
+        {% else %}
+          <a href="/login" class="{% if request.url.path == '/login' %}active{% endif %}">Login</a>
+          <a href="/register" class="{% if request.url.path == '/register' %}active{% endif %}">Buat akun</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    <main class="container">
+      {% if flash %}
+        <div class="flash {{ flash.category }}">{{ flash.message }}</div>
+      {% endif %}
+      {% block content %}{% endblock %}
+      <div class="footer">Iris Prediction UI - minimal & jelas.</div>
+    </main>
+  </body>
+</html>

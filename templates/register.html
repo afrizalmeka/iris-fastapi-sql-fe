@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="card">
+    <h1>Buat akun</h1>
+    <p class="subtitle">Daftarkan akun baru sebagai user.</p>
+    <form method="post" action="/register">
+      <div>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" required />
+      </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="new-password" required />
+      </div>
+      <div>
+        <label for="password_confirm">Ulangi password</label>
+        <input
+          id="password_confirm"
+          name="password_confirm"
+          type="password"
+          autocomplete="new-password"
+          required
+        />
+        <p id="password_mismatch" class="field-error" hidden>Password tidak cocok.</p>
+      </div>
+      <div class="form-actions">
+        <button type="submit">Daftar</button>
+        <a class="button-link secondary" href="/login">Kembali ke login</a>
+      </div>
+    </form>
+  </div>
+  <script>
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("password_confirm");
+    const mismatchMsg = document.getElementById("password_mismatch");
+    const submitButton = document.querySelector("button[type=\"submit\"]");
+
+    const checkMatch = () => {
+      if (!passwordInput.value || !confirmInput.value) {
+        mismatchMsg.hidden = true;
+        confirmInput.classList.remove("input-error");
+        submitButton.disabled = false;
+        return;
+      }
+
+      if (passwordInput.value !== confirmInput.value) {
+        mismatchMsg.hidden = false;
+        confirmInput.classList.add("input-error");
+        submitButton.disabled = true;
+      } else {
+        mismatchMsg.hidden = true;
+        confirmInput.classList.remove("input-error");
+        submitButton.disabled = false;
+      }
+    };
+
+    passwordInput.addEventListener("input", checkMatch);
+    confirmInput.addEventListener("input", checkMatch);
+    checkMatch();
+  </script>
+{% endblock %}

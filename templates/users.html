@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="card">
+    <h1>Manajemen akun</h1>
+    <p class="subtitle">Kelola username dan password Anda sendiri.</p>
+    <div class="form-grid">
+      <form method="post" action="/users/update-username">
+        <h2>Ubah username</h2>
+        <div>
+          <label for="update_username">Username baru</label>
+          <input
+            id="update_username"
+            name="username"
+            type="text"
+            value="{{ user.username }}"
+            required
+          />
+        </div>
+        <button type="submit">Update</button>
+      </form>
+
+      <form method="post" action="/users/update-password">
+        <h2>Ubah password</h2>
+        <div>
+          <label for="update_password">Password baru</label>
+          <input id="update_password" name="password" type="password" required />
+        </div>
+        <button type="submit" class="secondary">Update</button>
+      </form>
+    </div>
+    <p class="subtitle">Jenis akun: {{ user.role }}.</p>
+    <p class="subtitle">Dibuat: {{ user.created_at }} · Diubah: {{ user.updated_at }}</p>
+  </div>
+
+  <div class="card">
+    <h2>Riwayat prediksi saya</h2>
+    {% if history and history|length > 0 %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Waktu</th>
+            <th>Sepal</th>
+            <th>Petal</th>
+            <th>Label</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in history %}
+            <tr>
+              <td>{{ row.created_at }}</td>
+              <td>{{ row.sepal_length }}, {{ row.sepal_width }}</td>
+              <td>{{ row.petal_length }}, {{ row.petal_width }}</td>
+              <td>{{ row.label }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p class="subtitle">Belum ada riwayat prediksi.</p>
+    {% endif %}
+  </div>
+{% endblock %}
