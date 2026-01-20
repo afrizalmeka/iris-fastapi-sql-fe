@@ -2,6 +2,11 @@
 
 Aplikasi FastAPI untuk prediksi Iris dengan UI sederhana dan penyimpanan data di SQLite.
 
+## Sumber dan dokumentasi tambahan
+- SQL (DDL/DML): [sql-integration.md](sql-integration.md)
+- Panduan Makefile untuk pemula: [readme_makefile.md](readme_makefile.md)
+- Rangkuman API dan contoh: [api.md](api.md)
+
 ## Fitur
 - Login, registrasi user, dan manajemen akun (username/password).
 - Prediksi Iris + riwayat prediksi per user.
