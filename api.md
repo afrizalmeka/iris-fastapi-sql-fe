@@ -138,6 +138,11 @@ Response JSON:
 }
 ```
 
+Mapping nilai `prediction`:
+- `0` = Iris-setosa
+- `1` = Iris-versicolor
+- `2` = Iris-virginica
+
 Catatan:
 - Endpoint ini tidak menyimpan riwayat ke SQLite (hanya untuk UI form `/prediksi`).
 - Jika ingin simpan riwayat via API JSON, perlu endpoint baru.

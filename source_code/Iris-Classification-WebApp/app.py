@@ -24,7 +24,7 @@ def predict():
         model=pkl.load(f)
     arr=np.array([x,y,w,z]).reshape(1,-1)
     predict=model.predict(arr)
-    flower=["Iris-setosa","Iris-versicolor","","Iris-virginica"]
+    flower=["Iris-setosa","Iris-versicolor","Iris-virginica"]
 
     return render_template('index.html',data=flower[predict[0]])
 

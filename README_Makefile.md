@@ -2,6 +2,38 @@
 
 Dokumen ini menjelaskan cara menjalankan proyek dengan dan tanpa Makefile. Semua perintah diambil dari isi `Makefile` yang ada di root project ini.
 
+## 0) Instalasi make (Windows/macOS/Linux)
+
+Jika perintah `make` belum ada, instal sesuai OS. Setelah install, cek: `make --version`.
+
+macOS:
+```bash
+xcode-select --install
+```
+Atau (Homebrew):
+```bash
+brew install make
+```
+
+Linux:
+```bash
+# Ubuntu/Debian
+sudo apt update && sudo apt install -y make
+```
+Alternatif:
+```bash
+# Fedora
+sudo dnf install -y make
+# Arch
+sudo pacman -S make
+```
+
+Windows:
+- Disarankan (WSL): jalankan `wsl --install -d Ubuntu`, lalu di WSL: `sudo apt update && sudo apt install -y make`.
+- Native (tanpa WSL): install lewat `winget install GnuWin32.Make` atau `choco install make`/MSYS2, lalu buka terminal baru.
+
+Kalau tidak ingin install `make`, ikuti langkah manual di bagian 2 (Tanpa Makefile).
+
 ## 1) Konsep singkat: apa itu Makefile dan manfaatnya
 
 Makefile adalah file yang berisi kumpulan perintah terstruktur (disebut "target") agar langkah-langkah yang berulang bisa dijalankan dengan cepat dan konsisten.

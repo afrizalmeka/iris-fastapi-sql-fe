@@ -15,6 +15,36 @@ Aplikasi FastAPI untuk prediksi Iris dengan UI sederhana dan penyimpanan data di
 
 ## Requirements
 - Python 3.10+
+- `make` (opsional, hanya untuk perintah Makefile; lihat bagian Install make di bawah).
+
+## Install make (Windows/macOS/Linux)
+Jika perintah `make` belum ada, instal sesuai OS. Setelah install, cek: `make --version`.
+
+macOS:
+```bash
+xcode-select --install
+```
+Atau (Homebrew):
+```bash
+brew install make
+```
+
+Linux:
+```bash
+# Ubuntu/Debian
+sudo apt update && sudo apt install -y make
+```
+Alternatif:
+```bash
+# Fedora
+sudo dnf install -y make
+# Arch
+sudo pacman -S make
+```
+
+Windows:
+- Disarankan (WSL): jalankan `wsl --install -d Ubuntu`, lalu di WSL: `sudo apt update && sudo apt install -y make`.
+- Native (tanpa WSL): install lewat `winget install GnuWin32.Make` atau `choco install make`, lalu buka terminal baru.
 
 ## Menjalankan (Makefile)
 Build venv dan install dependency:
@@ -58,6 +88,11 @@ Respons contoh:
 ```json
 {"status":"success","prediction":0,"label":"Iris-setosa"}
 ```
+
+Mapping nilai `prediction`:
+- `0` = Iris-setosa
+- `1` = Iris-versicolor
+- `2` = Iris-virginica
 
 ## Database
 - File SQLite otomatis dibuat di `app.db` (root project).

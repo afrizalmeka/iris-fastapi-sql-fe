@@ -27,7 +27,7 @@ def main() -> None:
     if "Id" in data.columns:
         data = data.drop(columns=["Id"])
 
-    species_map = {"Iris-setosa": 0, "Iris-versicolor": 1, "Iris-virginica": 3}
+    species_map = {"Iris-setosa": 0, "Iris-versicolor": 1, "Iris-virginica": 2}
     data["Species"] = data["Species"].map(species_map).astype(int)
 
     x = data.drop(columns=["Species"]).values
